@@ -9,7 +9,10 @@
 1)所有网络请求限制了不能在activity里面和Fragment里面发起,必须在MVP的presenter里面进行网络请
 求这样便于管理MVP的View与presenter的代码     
 2)如果业务逻辑需要,一定要在Activity和Fragment里面发起网络请求,那么可以通过Application的
-mAppComponent对象,获取data module的DataManager对象,调用网络请求的client      
+mAppComponent对象,获取data module的DataManager对象,调用网络请求的client  
+# demo整体结构
+![](https://github.com/tenney-tang/TestMVP/blob/master/picture/p6.png)
+![](https://github.com/tenney-tang/TestMVP/blob/master/picture/p7.png)
 # 工程结构:
 	工程分为两个主要的module
 	app module:主工程模块(包含各种基类\MVP\工具类\自定义view)
@@ -67,6 +70,7 @@ okhttp拦截器 直接在浏览器抓包chrome://inspect 要翻墙或者下载ch
 * LocalCache 文件，对象，等等等等
 
 # 部分简单实用介绍
+__(其实里面还有好多巴多实用的没写出来/笑哭)__
 
 BaseMultiItemQuickAdapter 多类型的使用
 
