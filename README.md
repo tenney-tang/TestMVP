@@ -49,22 +49,22 @@ MVPFragmentPresenter在使用rxjava的时候，如果没有及时解除订阅，
 替代webview，比webview更强大  
 # data 层：使用开源框架
 
-* rxjava
+* rxjava          
   核心Observable（被观察者）可以理解为事件的发送者
   Observer（观察者）Observer可以理解为事件的接收者，就好像快递的接收者
   Subscriber （订阅）Subscriber 绑定两者，请求接口和请求回来的数据
 
- * okhttp   
+ * okhttp             
  用于网络请求
- * Retrofit 
+ * Retrofit            
  是把所有的网络请求封装起来 结合rxjava +okhttp  + Retrofit 
 
-* com.facebook.stetho:stetho 
+* com.facebook.stetho:stetho          
 okhttp拦截器 直接在浏览器抓包chrome://inspect 要翻墙或者下载chrome inspect 离线调试-工具包
 
-* klog 
-用于日志输出类同 logger 
-* LocalCache 文件缓存
+* klog      
+用于日志输出类同 logger ,可现实日资打印具体位置
+* LocalCache 文件，对象，等等等等
 
 BaseMultiItemQuickAdapter 多类型的使用
 
@@ -72,7 +72,9 @@ RxJava+Retrofit 一次合并多个请求
 
 rxbus 不同的fragment进行数据传递
 
-多界面（如登录注册验证码， 设置之类）不用activity跳转，fragment自由切换
+多界面（如登录注册验证码， 设置之类）不用activity跳转，fragment自由切换 
+（上述都有支持）
+
 
 
 
