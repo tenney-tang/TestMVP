@@ -64,7 +64,7 @@ MVPFragmentPresenter在使用rxjava的时候，如果没有及时解除订阅，
 okhttp拦截器 直接在浏览器抓包chrome://inspect 要翻墙或者下载chrome inspect 离线调试-工具包
 
 * klog      
-用于日志输出类同 logger ,可现实日资打印具体位置
+用于日志输出类同 logger ,可查看具体打印位置，logger基于klog封装
 * LocalCache 文件，对象，等等等等
 
 # 部分简单实用介绍
