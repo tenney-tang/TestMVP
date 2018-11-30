@@ -45,5 +45,5 @@ MVPFragmentPresenter在使用rxjava的时候，如果没有及时解除订阅，
 * LeakCanary  
 检查内存泄露
 
-* Agentweb 
+* Agentweb   
 替代webview，比webview更强大
