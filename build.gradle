@@ -1,0 +1,68 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.3'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        //BaseRecyclerViewAdapterHelper
+        maven { url 'https://jitpack.io' }
+        google()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    version_code = 1
+    version_name = '1.0.0'
+
+    compile_sdk_version = 28
+    min_sdk_version = 18
+    target_sdk_version = 28
+
+    junit_version = '4.12'
+
+    support_version = '25.3.1'
+
+    butterknife_version = '8.8.1'
+
+    dagger_version = '2.4'
+    javax_annotation_version = '10.0-b28'
+
+    rxlifecycle_version = '0.6.1'
+
+    klog_version = '1.5.0'
+
+    rxjava_version = '1.1.0'
+    rxandroid_version = '1.1.0'
+
+    retrofit_version = '2.0.2'
+
+    okhttp_version = '3.8.1'
+
+    stetho_version = '1.3.1'
+
+    reservoir_version = '3.0.0'
+
+    glide_version = '3.7.0'
+
+    leakcanary_version = '1.5.4'
+
+    recycler_adapter_version = 'v1.9.7'
+
+    imagepicker_version = '0.6.1'
+
+    agentweb_version = '4.0.2'
+
+}

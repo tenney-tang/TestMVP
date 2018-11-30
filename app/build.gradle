@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion compile_sdk_version
+
+    defaultConfig {
+        applicationId "com.segi.testmvp"
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName version_name
+    }
+    signingConfigs {
+        release {
+            //配置keystore
+            storeFile file("../testmvp.jks")
+            storePassword "testmvp"
+            keyAlias "testmvp"
+            keyPassword "testmvp"
+        }
+        debug {
+            //配置keystore
+            storeFile file("../testmvp.jks")
+            storePassword "testmvp"
+            keyAlias "testmvp"
+            keyPassword "testmvp"
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            applicationIdSuffix '.debug'
+            //HTTP_HOST_URL是你的请求域名
+            buildConfigField 'String', 'HTTP_HOST_URL', '"http://xxx.xxx.xxx/"'
+            buildConfigField 'boolean', 'LOG_ENABLE', 'true'
+            manifestPlaceholders = [APP_NAME: 'TestMVP测试版']
+        }
+
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //HTTP_HOST_URL是你的请求域名
+            buildConfigField 'String', 'HTTP_HOST_URL','"http://xxx.xxx.xxx/"'
+            buildConfigField 'boolean', 'LOG_ENABLE', 'false'
+            manifestPlaceholders = [APP_NAME: 'TestMVP']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+
+    api project(':data')
+
+    //junit
+    testImplementation "junit:junit:$junit_version"
+
+    //support
+    api "com.android.support:support-v4:$support_version"
+    api "com.android.support:appcompat-v7:$support_version"
+
+    //RecyclerView
+    api "com.android.support:recyclerview-v7:$support_version"
+
+    //BaseRecyclerViewAdapterHelper
+    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$recycler_adapter_version"
+
+    //butterknife
+    api "com.jakewharton:butterknife:$butterknife_version"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
+
+    //dagger2
+    api "com.google.dagger:dagger:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+
+    //java注解
+    api "org.glassfish:javax.annotation:$javax_annotation_version"
+
+    //rxlifecycle
+    api "com.trello:rxlifecycle-components:$rxlifecycle_version"
+
+    //LeakCanary
+    debugApi "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
+    releaseApi "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary_version"
+
+    //agentweb 开源webview
+    api "com.just.agentweb:agentweb:$agentweb_version"// (必选)
+//    api "com.just.agentweb:download:$agentweb_version"// (可选)
+//    api "com.just.agentweb:filechooser:$agentweb_version"// (可选)
+
+
+}

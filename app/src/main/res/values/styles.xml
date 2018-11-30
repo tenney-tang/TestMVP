@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color2</item>
+        <item name="colorPrimaryDark">@color/color2</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!-- 底部弹窗样式 -->
+    <style name="BottomDialogAnimatStyle">
+        <item name="android:windowEnterAnimation">@anim/anim_bottom_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_bottom_dialog_out</item>
+    </style>
+    <!--SimpleToolbar 样式-->
+    <style name="SimpleToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/color2</item>
+        <item name="android:layout_height">@dimen/simple_toolbar_height</item>
+        <item name="stb_title_text_color">@color/simple_toolbar_title_default_color</item>
+        <item name="stb_title_text_size">@dimen/simple_toolbar_title_default_size</item>
+        <item name="stb_right_text_color">@color/simple_toolbar_right_default_color</item>
+        <item name="stb_right_text_size">@dimen/simple_toolbar_right_default_size</item>
+    </style>
+</resources>

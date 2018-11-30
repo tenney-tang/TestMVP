@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion compile_sdk_version
+
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName version_name
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    //junit
+    testImplementation "junit:junit:$junit_version"
+
+    //dagger2
+    api "com.google.dagger:dagger:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+
+    //java注解
+    api "org.glassfish:javax.annotation:$javax_annotation_version"
+
+    //rxjava
+    api "io.reactivex:rxjava:$rxjava_version"
+    //rxandroid
+    api "io.reactivex:rxandroid:$rxandroid_version"
+
+    //retrofit
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
+
+    //Okhttp
+    api "com.squareup.okhttp3:okhttp:$okhttp_version"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    //okhttp拦截器
+    api "com.facebook.stetho:stetho:$stetho_version"
+    api "com.facebook.stetho:stetho-okhttp3:$stetho_version"
+
+    // reservoir 本地存储数据
+    api "com.anupcowkur:reservoir:$reservoir_version"
+
+    // klog
+    api "com.github.zhaokaiqiang.klog:library:$klog_version"
+
+
+}

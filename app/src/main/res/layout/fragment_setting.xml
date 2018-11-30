@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.segi.testmvp.widget.SimpleToolbar
+        style="@style/SimpleToolbar"
+        android:id="@+id/toolbar"
+        app:stb_title_text="设置"
+        app:stb_navigation_icon="@mipmap/ic_toolbar_back"/>
+    <Button
+        android:id="@+id/btn_about"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="去关于"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="去测试recyclerviewFragment"
+        android:gravity="center"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/btn_zip_test"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="多个接口合并请求"
+        android:gravity="center"
+        android:textSize="20sp"/>
+
+</LinearLayout>
