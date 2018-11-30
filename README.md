@@ -1,6 +1,30 @@
 # MVP框架
 博客地址：https://www.jianshu.com/u/2ce061e11334                       
-利用目前主流的开源库搭建的一套mvp开发模式，已经正式投入公司新项目开发，暂时没遇到什么问题，如果有问题，欢迎issues，其中有些库已经有新版本，如有业务需要，可以更新自行使用
-![](https://github.com/tenney-tang/TestMVP/tree/master/picture/p4.png)
-![](https://github.com/tenney-tang/TestMVP/tree/master/picture/p5.png)
+利用目前主流的开源库搭建的一套mvp开发模式，已经正式投入公司新项目开发，暂时没遇到什么问题，如果有问题，欢迎issues，其中有些库已经有新版本，如有业务需要，可以更新自行使用                   
+![](https://github.com/tenney-tang/TestMVP/blob/master/picture/p4.png)
+![](https://github.com/tenney-tang/TestMVP/blob/master/picture/p5.png)
 
+项目用的是MVP + RxJava + Dagger2 + Retrofit + okhttp
+	说明:1)所有网络请求限制了不能在activity里面和Fragment里面发起,必须在MVP的presenter里面进行网络请
+求这样便于管理MVP的View与presenter的代码
+2)如果业务逻辑需要,一定要在Activity和Fragment里面发起网络请求,那么可以通过Application的
+mAppComponent对象,获取data module的DataManager对象,调用网络请求的client
+工程结构:
+	工程分为两个主要的module
+	app module:主工程模块(包含各种基类\MVP\工具类\自定义view)
+	    基类:
+			普通Activity的基类 --> BaseActivity(这个基类里面限制了网络请求)
+				 
+			普通Fragment的基类 --> BaseFragment
+				 
+			封装了RecyclerView列表带上拉刷新下拉加载的Fragment基类 --> BaseRefreshRecyclerFragment
+				说明:封装的RecyclerView对象 --> mRecyclerView
+			     	封装的下拉刷新对象 --> mRefreshLayout
+			     	封装的Adapter对象 --> mAdapter
+			     	封装的LayoutManager对象 --> mLayoutManager
+		 
+	    MVP:
+			关联了MVP的Fragment基类 --> MVPFragmentView
+				说明:示例代码参考工程Zipfragment类
+			关联了MVP的Presenter基类 --> MVPFragmentPresenter
+说明:示例代码参考工程ZipPresenter类
