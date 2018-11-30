@@ -66,6 +66,8 @@ okhttp拦截器 直接在浏览器抓包chrome://inspect 要翻墙或者下载ch
 用于日志输出类同 logger ,可现实日资打印具体位置
 * LocalCache 文件，对象，等等等等
 
+# 部分简单实用介绍
+
 BaseMultiItemQuickAdapter 多类型的使用
 
 RxJava+Retrofit 一次合并多个请求代码片段如下           
@@ -121,7 +123,14 @@ rxbus 不同的fragment进行数据传递
 * RecycleViewDivider         
   RecycleView自定义分割线 横向，纵向，图片，颜色，都支持
 * SimpleToolbar     
-  全局的toolbar，包括了，左边返回 中间标题，右边关闭，右边第二个图标，具体还可拓展，根据自己需求来
+  全局的toolbar，包括了，左边返回 中间标题，右边关闭，右边第二个图标
+  （具体还可拓展，根据自己需求来，里面跟多精彩巧妙设计，等待大家去自行发掘）
+ 
+  
+  ## Android进阶汇Q群：515769388
+  
+   __终于写完了，第一次上传github，累死了，不过回头看看，再累也是值得滴~__
+
 
 
 
