@@ -68,12 +68,60 @@ okhttp拦截器 直接在浏览器抓包chrome://inspect 要翻墙或者下载ch
 
 BaseMultiItemQuickAdapter 多类型的使用
 
-RxJava+Retrofit 一次合并多个请求
+RxJava+Retrofit 一次合并多个请求代码片段如下           
+```
+@Override
+    public void refresh(int menuVersion, int menuSid, int settingsId, int cityId, int provinceId) {
+        //创建一个被观察者
+        Observable<BaseBean<ZipBean>> zipObservable = getAppComponent().getDataManeger().getDataStore().getMsgV3(cityId,provinceId);
+        Observable<BaseBean<TestBean>> testObservable = getAppComponent().getDataManeger().getDataStore().requestTestData( menuVersion, menuSid, settingsId);
+
+        Observable<ZipAndTestBean>zipAndTestBeanObservable =zipObservable.zipWith(testObservable, new Func2<BaseBean<ZipBean>, BaseBean<TestBean>, ZipAndTestBean>() {
+            @Override
+            public ZipAndTestBean call(BaseBean<ZipBean> zipBeanBaseBean, BaseBean<TestBean> testBeanBaseBean) {
+                ZipAndTestBean zipAndTestBean = new ZipAndTestBean();
+                        zipAndTestBean.zipBean = zipBeanBaseBean.data;
+                        zipAndTestBean.testBean = testBeanBaseBean.data;
+                        return zipAndTestBean;
+            }
+        });
+        zipAndTestBeanObservable.compose(this.<ZipAndTestBean>bindToLifecycle())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ZipAndTestBean>() {
+                    @Override
+                    public void onCompleted() {
+                        mView.onFinishRefresh();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        mView.onFinishError();
+                    }
+
+                    @Override
+                    public void onNext(ZipAndTestBean zipAndTestBean) {
+                         zipList.clear();
+                         testList.clear();
+                         zipList.addAll(zipAndTestBean.zipBean.dataList);
+                         testList.addAll(zipAndTestBean.testBean.dataList);
+
+                    }
+                });
+    }
+```
 
 rxbus 不同的fragment进行数据传递
 
 多界面（如登录注册验证码， 设置之类）不用activity跳转，fragment自由切换 
 （上述都有支持）
+
+# 自定义控件有     
+* ExactRefreshLayout    
+  准确度高的下拉刷新,手势只有在往下的时候才出现下拉的球
+* RecycleViewDivider         
+  RecycleView自定义分割线 横向，纵向，图片，颜色，都支持
+* SimpleToolbar     
+  全局的toolbar，包括了，左边返回 中间标题，右边关闭，右边第二个图标，具体还可拓展，根据自己需求来
 
 
 
