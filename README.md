@@ -5,10 +5,11 @@
 ![](https://github.com/tenney-tang/TestMVP/blob/master/picture/p5.png)
 
 项目用的是MVP + RxJava + Dagger2 + Retrofit + okhttp
-	说明:1)所有网络请求限制了不能在activity里面和Fragment里面发起,必须在MVP的presenter里面进行网络请
-求这样便于管理MVP的View与presenter的代码
+# 说明:                        
+1)所有网络请求限制了不能在activity里面和Fragment里面发起,必须在MVP的presenter里面进行网络请
+求这样便于管理MVP的View与presenter的代码     
 2)如果业务逻辑需要,一定要在Activity和Fragment里面发起网络请求,那么可以通过Application的
-mAppComponent对象,获取data module的DataManager对象,调用网络请求的client
+mAppComponent对象,获取data module的DataManager对象,调用网络请求的client      
 工程结构:
 	工程分为两个主要的module
 	app module:主工程模块(包含各种基类\MVP\工具类\自定义view)
