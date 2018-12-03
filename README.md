@@ -32,7 +32,7 @@ mAppComponent对象,获取data module的DataManager对象,调用网络请求的c
 ![](https://github.com/tenney-tang/TestMVP/blob/master/picture/p7.png)
 # APP层：使用开源框架 
 * BaseRecyclerViewAdapterHelper       
-BaseMultiItemQuickAdapter 可加载不同类型布局类型，  openLoadAnimation   加载动画        
+BaseMultiItemQuickAdapter 可加载不同类型布局类型，  openLoadAnimation   加载动画 ,上拉加载，下拉刷新，（都可自定义view）       
 
 * butterknife   
 注解，替代findViewById，注解点击事件
