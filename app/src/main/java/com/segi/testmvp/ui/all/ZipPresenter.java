@@ -37,7 +37,7 @@ public class ZipPresenter extends MVPFragmentPresenter<ZipContract.View> impleme
             }
         });
         zipAndTestBeanObservable.compose(this.<ZipAndTestBean>bindToLifecycle())
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ZipAndTestBean>() {
                     @Override
                     public void onCompleted() {

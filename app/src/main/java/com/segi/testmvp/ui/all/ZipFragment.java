@@ -1,7 +1,6 @@
 package com.segi.testmvp.ui.all;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,18 +42,13 @@ public class ZipFragment extends MVPFragmentView<ZipContract.Presenter> implemen
 
     @Override
     public void onFinishRefresh() {
-        txtAllTitle.post(new Runnable() {
-            @Override
-            public void run() {
-                txtAllTitle.setText(mPresenter.getZipList().get(0).title+" @第二个接口的@ "+mPresenter.getTestList().get(0).serviceDesc);
-            }
-        });
+        txtAllTitle.setText(mPresenter.getZipList().get(0).title + " @第二个接口的@ " + mPresenter.getTestList().get(0).serviceDesc);
 
     }
 
     @Override
     public void onFinishError() {
-        Logger.d(TAG,"tjl失败了？？");
+        Logger.d(TAG, "tjl失败了？？");
     }
 
     @Override
