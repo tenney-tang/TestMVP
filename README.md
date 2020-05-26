@@ -90,7 +90,7 @@ RxJava+Retrofit 一次合并多个请求代码片段如下
             }
         });
         zipAndTestBeanObservable.compose(this.<ZipAndTestBean>bindToLifecycle())
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ZipAndTestBean>() {
                     @Override
                     public void onCompleted() {
