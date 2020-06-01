@@ -1,7 +1,9 @@
 package com.segi.testmvp.base.mvp;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.Nullable;
 
 import com.segi.testmvp.base.app.BaseActivity;
 
@@ -12,37 +14,46 @@ public abstract class MVPActivityView<P extends MVPPresenter> extends BaseActivi
         implements MVPView {
 
     protected P mPresenter;
+    private static final Handler mHandler = new Handler(Looper.getMainLooper());
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         mPresenter = onBindPresenter();
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                onFirstLoadingData();
+            }
+        });
     }
 
     protected abstract P onBindPresenter();
 
 
     /**
-     * 绑定 MVPFragmentPresenter
+     * 绑定 MVPActivityPresenter
      *
      * @param presenterClass presenterClass
      * @param <T>            泛型
      * @return MVPFragmentPresenter
      */
-    final protected <T extends MVPFragmentPresenter> T bindPresenter(Class<T> presenterClass) {
+    final protected <T extends MVPActivityPresenter> T bindPresenter(Class<T> presenterClass) {
         return checkAndAddFragment(0, presenterClass.getCanonicalName(), presenterClass, null);
     }
 
     /**
-     * 绑定 MVPFragmentPresenter
+     * 绑定 MVPActivityPresenter
      *
      * @param presenterClass presenterClass
      * @param args           传输的数据
      * @param <T>            泛型
      * @return MVPFragmentPresenter
      */
-    final protected <T extends MVPFragmentPresenter> T bindPresenter(Class<T> presenterClass,
+    final protected <T extends MVPActivityPresenter> T bindPresenter(Class<T> presenterClass,
                                                                      Bundle args) {
         return checkAndAddFragment(0, presenterClass.getCanonicalName(), presenterClass, args);
     }
+
+
 }
